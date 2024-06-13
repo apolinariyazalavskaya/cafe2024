@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cafe_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DishTable">
+    <Key>
+      <PropertyRef Name="IDDish" />
+    </Key>
+    <Property Name="IDDish" Type="Int32" Nullable="false" />
+    <Property Name="NameDish" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountDish" Type="Int32" />
+    <NavigationProperty Name="ZakazTables" Relationship="Self.FK_ZakazTable_DishTable1" FromRole="DishTable" ToRole="ZakazTable" />
+  </EntityType>
+  <EntityType Name="DrinkTable">
+    <Key>
+      <PropertyRef Name="IDDrink" />
+    </Key>
+    <Property Name="IDDrink" Type="Int32" Nullable="false" />
+    <Property Name="NameDrink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountDrink" Type="Int32" />
+    <NavigationProperty Name="ZakazTables" Relationship="Self.FK_ZakazTable_DrinkTable1" FromRole="DrinkTable" ToRole="ZakazTable" />
+  </EntityType>
+  <EntityType Name="GenderTable">
+    <Key>
+      <PropertyRef Name="IDGender" />
+    </Key>
+    <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDGender" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkTables" Relationship="Self.FK_WorkTable_GenderTable" FromRole="GenderTable" ToRole="WorkTable" />
+  </EntityType>
+  <EntityType Name="PositionTable">
+    <Key>
+      <PropertyRef Name="IDPosition" />
+    </Key>
+    <Property Name="NamePosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDPosition" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkTables" Relationship="Self.FK_WorkTable_PositionTable" FromRole="PositionTable" ToRole="WorkTable" />
+  </EntityType>
+  <EntityType Name="SmenaTable">
+    <Key>
+      <PropertyRef Name="IDSmena" />
+    </Key>
+    <Property Name="IDSmena" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Worker" Type="Int32" />
+    <Property Name="DateExit" Type="DateTime" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <NavigationProperty Name="WorkTable" Relationship="Self.FK_SmenaTable_WorkTable" FromRole="SmenaTable" ToRole="WorkTable" />
+  </EntityType>
+  <EntityType Name="StatusCookTable">
+    <Key>
+      <PropertyRef Name="IDStatusCook" />
+    </Key>
+    <Property Name="StatusCookName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDStatusCook" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ZakazTables" Relationship="Self.FK_ZakazTable_StatusCookTable" FromRole="StatusCookTable" ToRole="ZakazTable" />
+  </EntityType>
+  <EntityType Name="StatusOficTable">
+    <Key>
+      <PropertyRef Name="IDStatusOfic" />
+    </Key>
+    <Property Name="StatusOficName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDStatusOfic" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ZakazTables" Relationship="Self.FK_ZakazTable_StatusOficTable" FromRole="StatusOficTable" ToRole="ZakazTable" />
+  </EntityType>
+  <EntityType Name="StatusWorkerTable">
+    <Key>
+      <PropertyRef Name="IDStatusWork" />
+    </Key>
+    <Property Name="StatusWorkName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDStatusWork" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkTables" Relationship="Self.FK_WorkTable_StatusWorkerTable" FromRole="StatusWorkerTable" ToRole="WorkTable" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="WorkTable">
+    <Key>
+      <PropertyRef Name="IDWorker" />
+    </Key>
+    <Property Name="IDWorker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateBirthday" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="Int32" />
+    <Property Name="WorkPosition" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GenderTable" Relationship="Self.FK_WorkTable_GenderTable" FromRole="WorkTable" ToRole="GenderTable" />
+    <NavigationProperty Name="PositionTable" Relationship="Self.FK_WorkTable_PositionTable" FromRole="WorkTable" ToRole="PositionTable" />
+    <NavigationProperty Name="SmenaTables" Relationship="Self.FK_SmenaTable_WorkTable" FromRole="WorkTable" ToRole="SmenaTable" />
+    <NavigationProperty Name="StatusWorkerTable" Relationship="Self.FK_WorkTable_StatusWorkerTable" FromRole="WorkTable" ToRole="StatusWorkerTable" />
+    <NavigationProperty Name="ZakazTables" Relationship="Self.FK_ZakazTable_WorkTable" FromRole="WorkTable" ToRole="ZakazTable" />
+  </EntityType>
+  <EntityType Name="ZakazTable">
+    <Key>
+      <PropertyRef Name="IDZakaz" />
+    </Key>
+    <Property Name="IDZakaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusOfic" Type="Int32" />
+    <Property Name="StatusCook" Type="Int32" />
+    <Property Name="Oficiant" Type="Int32" />
+    <Property Name="NTable" Type="Int32" />
+    <Property Name="NDish" Type="Int32" />
+    <Property Name="NDrink" Type="Int32" />
+    <Property Name="DateZakaz" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DishTable" Relationship="Self.FK_ZakazTable_DishTable1" FromRole="ZakazTable" ToRole="DishTable" />
+    <NavigationProperty Name="DrinkTable" Relationship="Self.FK_ZakazTable_DrinkTable1" FromRole="ZakazTable" ToRole="DrinkTable" />
+    <NavigationProperty Name="StatusCookTable" Relationship="Self.FK_ZakazTable_StatusCookTable" FromRole="ZakazTable" ToRole="StatusCookTable" />
+    <NavigationProperty Name="StatusOficTable" Relationship="Self.FK_ZakazTable_StatusOficTable" FromRole="ZakazTable" ToRole="StatusOficTable" />
+    <NavigationProperty Name="WorkTable" Relationship="Self.FK_ZakazTable_WorkTable" FromRole="ZakazTable" ToRole="WorkTable" />
+  </EntityType>
+  <Association Name="FK_ZakazTable_DishTable1">
+    <End Role="DishTable" Type="Self.DishTable" Multiplicity="0..1" />
+    <End Role="ZakazTable" Type="Self.ZakazTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DishTable">
+        <PropertyRef Name="IDDish" />
+      </Principal>
+      <Dependent Role="ZakazTable">
+        <PropertyRef Name="NDish" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZakazTable_DrinkTable1">
+    <End Role="DrinkTable" Type="Self.DrinkTable" Multiplicity="0..1" />
+    <End Role="ZakazTable" Type="Self.ZakazTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DrinkTable">
+        <PropertyRef Name="IDDrink" />
+      </Principal>
+      <Dependent Role="ZakazTable">
+        <PropertyRef Name="NDrink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkTable_GenderTable">
+    <End Role="GenderTable" Type="Self.GenderTable" Multiplicity="0..1" />
+    <End Role="WorkTable" Type="Self.WorkTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GenderTable">
+        <PropertyRef Name="IDGender" />
+      </Principal>
+      <Dependent Role="WorkTable">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkTable_PositionTable">
+    <End Role="PositionTable" Type="Self.PositionTable" Multiplicity="0..1" />
+    <End Role="WorkTable" Type="Self.WorkTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PositionTable">
+        <PropertyRef Name="IDPosition" />
+      </Principal>
+      <Dependent Role="WorkTable">
+        <PropertyRef Name="WorkPosition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SmenaTable_WorkTable">
+    <End Role="WorkTable" Type="Self.WorkTable" Multiplicity="0..1" />
+    <End Role="SmenaTable" Type="Self.SmenaTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkTable">
+        <PropertyRef Name="IDWorker" />
+      </Principal>
+      <Dependent Role="SmenaTable">
+        <PropertyRef Name="Worker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZakazTable_StatusCookTable">
+    <End Role="StatusCookTable" Type="Self.StatusCookTable" Multiplicity="0..1" />
+    <End Role="ZakazTable" Type="Self.ZakazTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusCookTable">
+        <PropertyRef Name="IDStatusCook" />
+      </Principal>
+      <Dependent Role="ZakazTable">
+        <PropertyRef Name="StatusCook" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZakazTable_StatusOficTable">
+    <End Role="StatusOficTable" Type="Self.StatusOficTable" Multiplicity="0..1" />
+    <End Role="ZakazTable" Type="Self.ZakazTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusOficTable">
+        <PropertyRef Name="IDStatusOfic" />
+      </Principal>
+      <Dependent Role="ZakazTable">
+        <PropertyRef Name="StatusOfic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkTable_StatusWorkerTable">
+    <End Role="StatusWorkerTable" Type="Self.StatusWorkerTable" Multiplicity="0..1" />
+    <End Role="WorkTable" Type="Self.WorkTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusWorkerTable">
+        <PropertyRef Name="IDStatusWork" />
+      </Principal>
+      <Dependent Role="WorkTable">
+        <PropertyRef Name="Status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZakazTable_WorkTable">
+    <End Role="WorkTable" Type="Self.WorkTable" Multiplicity="0..1" />
+    <End Role="ZakazTable" Type="Self.ZakazTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkTable">
+        <PropertyRef Name="IDWorker" />
+      </Principal>
+      <Dependent Role="ZakazTable">
+        <PropertyRef Name="Oficiant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="cafe_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DishTables" EntityType="Self.DishTable" />
+    <EntitySet Name="DrinkTables" EntityType="Self.DrinkTable" />
+    <EntitySet Name="GenderTables" EntityType="Self.GenderTable" />
+    <EntitySet Name="PositionTables" EntityType="Self.PositionTable" />
+    <EntitySet Name="SmenaTables" EntityType="Self.SmenaTable" />
+    <EntitySet Name="StatusCookTables" EntityType="Self.StatusCookTable" />
+    <EntitySet Name="StatusOficTables" EntityType="Self.StatusOficTable" />
+    <EntitySet Name="StatusWorkerTables" EntityType="Self.StatusWorkerTable" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="WorkTables" EntityType="Self.WorkTable" />
+    <EntitySet Name="ZakazTables" EntityType="Self.ZakazTable" />
+    <AssociationSet Name="FK_ZakazTable_DishTable1" Association="Self.FK_ZakazTable_DishTable1">
+      <End Role="DishTable" EntitySet="DishTables" />
+      <End Role="ZakazTable" EntitySet="ZakazTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZakazTable_DrinkTable1" Association="Self.FK_ZakazTable_DrinkTable1">
+      <End Role="DrinkTable" EntitySet="DrinkTables" />
+      <End Role="ZakazTable" EntitySet="ZakazTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkTable_GenderTable" Association="Self.FK_WorkTable_GenderTable">
+      <End Role="GenderTable" EntitySet="GenderTables" />
+      <End Role="WorkTable" EntitySet="WorkTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkTable_PositionTable" Association="Self.FK_WorkTable_PositionTable">
+      <End Role="PositionTable" EntitySet="PositionTables" />
+      <End Role="WorkTable" EntitySet="WorkTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SmenaTable_WorkTable" Association="Self.FK_SmenaTable_WorkTable">
+      <End Role="WorkTable" EntitySet="WorkTables" />
+      <End Role="SmenaTable" EntitySet="SmenaTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZakazTable_StatusCookTable" Association="Self.FK_ZakazTable_StatusCookTable">
+      <End Role="StatusCookTable" EntitySet="StatusCookTables" />
+      <End Role="ZakazTable" EntitySet="ZakazTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZakazTable_StatusOficTable" Association="Self.FK_ZakazTable_StatusOficTable">
+      <End Role="StatusOficTable" EntitySet="StatusOficTables" />
+      <End Role="ZakazTable" EntitySet="ZakazTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkTable_StatusWorkerTable" Association="Self.FK_WorkTable_StatusWorkerTable">
+      <End Role="StatusWorkerTable" EntitySet="StatusWorkerTables" />
+      <End Role="WorkTable" EntitySet="WorkTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZakazTable_WorkTable" Association="Self.FK_ZakazTable_WorkTable">
+      <End Role="WorkTable" EntitySet="WorkTables" />
+      <End Role="ZakazTable" EntitySet="ZakazTables" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

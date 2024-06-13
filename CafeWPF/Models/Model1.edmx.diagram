@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3572ebf472d4375843d3c8af0aabc6b" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="cafe_dbModel.DishTable" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.DrinkTable" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.GenderTable" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.PositionTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.SmenaTable" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.StatusCookTable" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.StatusOficTable" Width="1.5" PointX="6" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.StatusWorkerTable" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.sysdiagram" Width="1.5" PointX="2.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.WorkTable" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cafe_dbModel.ZakazTable" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="cafe_dbModel.FK_ZakazTable_DishTable1" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_ZakazTable_DrinkTable1" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_WorkTable_GenderTable" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_WorkTable_PositionTable" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_SmenaTable_WorkTable" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_ZakazTable_StatusCookTable" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_ZakazTable_StatusOficTable" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_WorkTable_StatusWorkerTable" ManuallyRouted="false" />
+        <AssociationConnector Association="cafe_dbModel.FK_ZakazTable_WorkTable" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
